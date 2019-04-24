@@ -30,8 +30,15 @@ public class WC15
    */
   public static String centralThree(String letters)
   {
-    //TODO: Finish
-    return "no";
+    // TODO: Finish
+    String answer = "";
+    int middle = letters.length() / 2;
+
+    if (letters.length() == 3)
+      return letters;
+
+    answer += letters.substring(middle - 1, middle + 2);
+    return answer;
   }
 
   /**
@@ -51,8 +58,20 @@ public class WC15
    */
   public static String chopFront(String str)
   {
-    //TODO: Finish
-    return "no";
+    // TODO: Finish
+    String answer = "";
+    if (str.length() >= 2)
+    {
+      if (str.substring(0, 1).equals("a"))
+        answer += str.substring(0, 1);
+
+      if (str.substring(1, 2).equals("b"))
+        answer += str.substring(1, 2);
+
+      answer += str.substring(2);
+    }
+
+    return answer;
   }
 
   /**
@@ -72,8 +91,29 @@ public class WC15
    */
   public static String hateX(String str)
   {
-    //TODO: Finish
-    return "no";
+    // TODO: Finish
+    String answer = "";
+    if (str.substring(0, 1).equals("x"))
+    {
+      if (str.substring(1, 2).equals("x"))
+      {
+        answer += str.substring(2);
+      }
+      else
+      {
+        answer = str.substring(1);
+      }
+    }
+    else if (str.substring(1, 2).equals("x"))
+    {
+      answer += str.substring(0, 1) + str.substring(2);
+    }
+    else
+    {
+      answer = str;
+    }
+    return answer;
+
   }
 
   /**
@@ -88,7 +128,10 @@ public class WC15
    */
   public static void swapRows(int[][] mat, int rowAIndex, int rowBIndex)
   {
-    //TODO: Finish
+    // TODO: Finish
+    int [] temp = mat[rowAIndex];
+    mat[rowAIndex] = mat[rowBIndex];
+    mat[rowBIndex] = temp;
   }
 
   /**
@@ -103,7 +146,16 @@ public class WC15
    */
   public static void swapColumns(int[][] mat, int colAIndex, int colBIndex)
   {
-    //TODO: Finish
+    int [] temp = new int [mat[0].length];
+    for (int r = 0; r < mat.length; r++)
+    {
+      temp[r] = mat[r][colAIndex];
+      mat[r][colAIndex] = mat[r][colBIndex];
+      mat[r][colBIndex] = temp[r];
+    }
+    
+    
+    // TODO: Finish
   }
 
   /**
@@ -122,7 +174,7 @@ public class WC15
    */
   public static String[][] fill2DWithLetters(String str, int rows, int cols)
   {
-    //TODO: Finish
+    // TODO: Finish
     return new String[][] {{"42"}};
   }
 
@@ -155,7 +207,7 @@ public class WC15
    */
   public static int[][] fillDownAndUp(int[] vals, int rows, int cols)
   {
-    //TODO: Finish
+    // TODO: Finish
     return new int[][] {{42}};
   }
 
@@ -189,9 +241,9 @@ public class WC15
    * @return a smaller array containing the specified elements
    */
   public static int[][] crop2D(int[][] mat, int startRow, int startCol,
-      int endRow, int endCol)
+    int endRow, int endCol)
   {
-    //TODO: Finish
+    // TODO: Finish
     return new int[][] {{42}};
   }
 
