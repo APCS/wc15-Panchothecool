@@ -129,7 +129,7 @@ public class WC15
   public static void swapRows(int[][] mat, int rowAIndex, int rowBIndex)
   {
     // TODO: Finish
-    int [] temp = mat[rowAIndex];
+    int[] temp = mat[rowAIndex];
     mat[rowAIndex] = mat[rowBIndex];
     mat[rowBIndex] = temp;
   }
@@ -146,15 +146,14 @@ public class WC15
    */
   public static void swapColumns(int[][] mat, int colAIndex, int colBIndex)
   {
-    int [] temp = new int [mat[0].length];
+    int[] temp = new int[mat[0].length];
     for (int r = 0; r < mat.length; r++)
     {
       temp[r] = mat[r][colAIndex];
       mat[r][colAIndex] = mat[r][colBIndex];
       mat[r][colBIndex] = temp[r];
     }
-    
-    
+
     // TODO: Finish
   }
 
@@ -175,7 +174,20 @@ public class WC15
   public static String[][] fill2DWithLetters(String str, int rows, int cols)
   {
     // TODO: Finish
-    return new String[][] {{"42"}};
+    String[][] answer = new String[rows][cols];
+    int helper = 0;
+    for (int r = 0; r < answer.length; r++)
+    {
+      for (int c = 0; c < answer[0].length; c++)
+      {
+        if (helper < str.length())
+        {
+          answer[r][c] = str.substring(helper, helper + 1);
+          helper++;
+        }
+      }
+    }
+    return answer;
   }
 
   /**
@@ -208,7 +220,29 @@ public class WC15
   public static int[][] fillDownAndUp(int[] vals, int rows, int cols)
   {
     // TODO: Finish
-    return new int[][] {{42}};
+    int[][] answer = new int[rows][cols];
+    int counter = 0;
+    for (int c = 0; c < answer[0].length; c++)
+    {
+      for (int r = 0; r < answer.length; r++)
+      {
+        if (c % 2 == 0) // only even numbered columns are going to be going down
+                        // normal
+          answer[r][c] = vals[counter];
+        else // odd numbered columns are going to be the weird ones that we need
+             // to go up instead of down.
+          answer[answer.length - r - 1][c] = vals[counter];
+        // answer.length - 1
+        // keeps the index
+        // in check and
+        // subtracting r
+        // lets the rows
+        // change down by
+        // one
+        counter++;
+      }
+    }
+    return answer;
   }
 
   /**
@@ -243,8 +277,18 @@ public class WC15
   public static int[][] crop2D(int[][] mat, int startRow, int startCol,
     int endRow, int endCol)
   {
-    // TODO: Finish
-    return new int[][] {{42}};
+    int totalRows = endRow - startRow + 1; // + 1 to keep right amount of rows.
+    int totalCols = endCol - startCol + 1;  // + 1 to keep right amount of columns.
+    int [][] answer = new int [totalRows][totalCols]; // only has the necessary rows and columns.
+    
+    for (int r = 0; r < answer.length; r++)
+    {
+      for (int c = 0; c < answer[0].length; c++)
+      {
+        answer[r][c] = mat[startRow + r][startCol + c];
+      }
+    }
+    return answer;
   }
 
 }
